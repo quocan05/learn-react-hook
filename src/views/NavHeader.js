@@ -2,8 +2,8 @@ import "../views/NavHeader.scss";
 
 const NavHeader = () => {
   return (
-    <div class="topnav">
-      <a class="active" href="#home">
+    <div className="topnav">
+      <a className="active" href="#home">
         Home
       </a>
       <a href="#news">News</a>
