@@ -3,7 +3,7 @@ import "./App.scss";
 import "./views/NavHeader.js";
 import NavHeader from "./views/NavHeader.js";
 import { useState } from "react";
-
+import Todos from "./views/Todo.js";
 function App() {
   let [name, setName] = useState("");
   let [temp, setTemp] = useState("");
@@ -16,10 +16,11 @@ function App() {
 
   const handleOnclick = () => {
     if (!temp) {
-      alert("invalid input");
+      console.log("temp value: ", temp);
+      alert("empty input");
       return;
     }
-    let newTodo = { id: generateRandomString(10), title: temp };
+    let newTodo = { id: generateRandomString(2), title: temp };
     setTodos([...todos, newTodo]);
     setTemp("");
   };
@@ -49,16 +50,7 @@ function App() {
         <p>Hello world</p>
         <p>My name is {name}</p>
 
-        <div className="todo-wrapper">
-          {todos.map((todo) => {
-            // console.log(">>> check todo list: ", todo);
-            return (
-              <li className="todo-item" key={todo.id}>
-                {todo.title}{" "}
-              </li>
-            );
-          })}
-        </div>
+        <Todos value={todos} title={"all my todos"} />
 
         <input
           type="text"
