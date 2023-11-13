@@ -1,17 +1,36 @@
 const Todos = (props) => {
-  let todos = props.value;
+  const title = props.title;
+  const todos = props.value;
+  const deleteTodo = props.delete;
+  //console.log(">>check props: ", props);
 
-  console.log(">>check props: ", props);
+  const handleDelete = (element) => {
+    console.log(typeof element);
+    deleteTodo(element);
+  };
+
   return (
     <div>
+      <p>{title}</p>
       {todos.map((todo) => {
-        console.log(todo);
+        //console.log(todo);
         return (
-          <li className="todo-item" key={todo.id}>
-            {todo.title}
-          </li>
+          <div key={todo.id}>
+            <li className="todo-item">
+              {todo.title}{" "}
+              <span
+                onClick={(element) => {
+                  element = todo.id;
+                  handleDelete(element);
+                }}
+              >
+                X
+              </span>
+            </li>
+          </div>
         );
       })}
+      <hr />
     </div>
   );
 };

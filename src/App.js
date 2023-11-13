@@ -9,9 +9,14 @@ function App() {
   let [temp, setTemp] = useState("");
 
   let [todos, setTodos] = useState([
-    { id: "1", title: "watch porn" },
-    { id: "2", title: "learn react" },
-    { id: "3", title: "do TOEIC test" },
+    { id: "1", title: "watch porn", auth: "An" },
+    { id: "2", title: "learn react", auth: "An" },
+    { id: "3", title: "do TOEIC test", auth: "An" },
+    { id: "4", title: "speaking", auth: "nA" },
+    { id: "5", title: "sleep", auth: "nA" },
+    { id: "6", title: "wake up", auth: "nA" },
+    { id: "7", title: "study", auth: "An" },
+    { id: "8", title: "go academy", auth: "nA" },
   ]);
 
   const handleOnclick = () => {
@@ -42,16 +47,27 @@ function App() {
 
     return result;
   };
+
+  const deleteTodo = (id) => {
+    let currentTodo;
+    currentTodo = todos.filter((item) => item.id !== id);
+    setTodos(currentTodo);
+  };
   return (
     <div className="App">
       <NavHeader />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello world</p>
-        <p>My name is {name}</p>
+        {/* <p>My name is {name}</p> */}
 
-        <Todos value={todos} title={"all my todos"} />
+        <Todos value={todos} title={"all todos"} delete={deleteTodo} />
 
+        <Todos
+          value={todos.filter((item) => item.auth === "An")}
+          title={"An's todos"}
+          delete={deleteTodo}
+        />
         <input
           type="text"
           value={temp}
