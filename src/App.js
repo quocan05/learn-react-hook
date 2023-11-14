@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.scss";
 import "./views/NavHeader.js";
 import NavHeader from "./views/NavHeader.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Todos from "./views/Todo.js";
 function App() {
   let [name, setName] = useState("");
@@ -29,6 +29,10 @@ function App() {
     setTodos([...todos, newTodo]);
     setTemp("");
   };
+
+  useEffect(() => {
+    console.log("call useEffect.");
+  }, [todos]);
 
   const handleChangeName = (event) => {
     setTemp(event.target.value);
