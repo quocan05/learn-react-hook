@@ -4,6 +4,7 @@ import "./views/NavHeader.js";
 import NavHeader from "./views/NavHeader.js";
 import { useState, useEffect } from "react";
 import Todos from "./views/Todo.js";
+import DetailCar from "./views/DetailCar.js";
 function App() {
   let [name, setName] = useState("");
   let [temp, setTemp] = useState("");
@@ -65,7 +66,7 @@ function App() {
         <p>Hello world</p>
         {/* <p>My name is {name}</p> */}
 
-        <Todos value={todos} title={"all todos"} delete={deleteTodo} />
+        {/* <Todos value={todos} title={"all todos"} delete={deleteTodo} />
 
         <Todos
           value={todos.filter((item) => item.auth === "An")}
@@ -94,7 +95,40 @@ function App() {
           rel="noopener noreferrer"
         >
           Mah Facebook
-        </a>
+        </a> */}
+
+        <DetailCar
+          car={{
+            name: "Nissan GTR Skyline",
+            brand: "Nissan",
+            imageId: "DbbBaNX",
+            altNameImage: "Image of Nissan GTR Skyline",
+            type: "Sport Car",
+            generation: [
+              "1969-1972",
+              "1972-1973",
+              "1989–1994",
+              "1995–1998",
+              "1999–2002",
+            ],
+          }}
+        />
+        <DetailCar
+          car={{
+            name: "Koenigsegg Jesko",
+            brand: "Koenigsegg",
+            imageId: "VRJN7gf",
+            altNameImage: "Image of Koenigsegg Jesko",
+            type: "Super Sport Car",
+            generation: [
+              "1969-1972",
+              "1972-1973",
+              "1989–1994",
+              "1995–1998",
+              "1999–2002",
+            ],
+          }}
+        />
       </header>
     </div>
   );
