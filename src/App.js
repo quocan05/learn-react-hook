@@ -5,6 +5,7 @@ import NavHeader from "./views/NavHeader.js";
 import { useState, useEffect } from "react";
 import Todos from "./views/Todo.js";
 import DetailCar from "./views/DetailCar.js";
+import TodoJson from "./views/TodoJson.js";
 function App() {
   let [name, setName] = useState("");
   let [temp, setTemp] = useState("");
@@ -97,7 +98,7 @@ function App() {
           Mah Facebook
         </a> */}
 
-        <DetailCar
+        {/* <DetailCar
           car={{
             name: "Nissan GTR Skyline",
             brand: "Nissan",
@@ -128,7 +129,10 @@ function App() {
               "1999–2002",
             ],
           }}
-        />
+        /> */}
+
+        <p>List Todo JSON</p>
+        <TodoJson />
       </header>
     </div>
   );
