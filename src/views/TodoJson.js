@@ -4,60 +4,64 @@ import axios from "axios";
 const TodoJson = () => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
-    const fetchData = () => {
-      setTimeout(async () => {
-        try {
-          let response = await axios.get(
-            "https://jsonplaceholder.typicode.com/todos"
-          );
-          console.log(">>check response: ", response);
-          let data = response.data && response ? response.data : [];
-          let filteredResponse = data.filter(
-            (todo) => todo.completed === false
-          );
-          setTodos(filteredResponse);
-          setIsLoading(false);
-        } catch (error) {
-          console.log("Error fetching data:", error);
-        }
-      }, 3000);
+    let fetchData = async () => {
+      try {
+        let response = await axios.get(
+          "https://jsonplaceholder.typicode.com/todos"
+        );
+        //console.log(response.data);
+        let data = response && response.data ? response.data : [];
+        let filteredData = data.filter((item) => item.id < 20);
+        setIsLoading(false);
+        setTodos(filteredData);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+        setIsError(true);
+      }
     };
-
     fetchData();
   }, []);
-
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>title</th>
-            <th>completed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos &&
-            todos.length > 0 &&
-            isLoading === false &&
-            todos.map((todo) => (
-              <tr key={todo.id}>
-                <td>{todo.id}</td>
-                <td>{todo.title}</td>
-                <td>{todo.completed ? "Yes" : "No"}</td>
-              </tr>
-            ))}
-          {isLoading === true && (
-            <tr>
-              <td colSpan="3" style={{ textAlign: "center" }}>
-                Loading...
-              </td>
+    <table>
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>title</td>
+          <td>completed</td>
+        </tr>
+      </thead>
+      <tbody>
+        {isError === false &&
+          isLoading === false &&
+          todos &&
+          todos.length > 0 &&
+          todos.map((todo) => (
+            <tr key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.title}</td>
+              <td>{todo.completed ? "Yes" : "No"}</td>
             </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+          ))}
+        {isLoading === true && (
+          <tr>
+            <td colSpan={3} style={{ textAlign: "center" }}>
+              Loading....
+            </td>
+          </tr>
+        )}
+
+        {isError === true && (
+          <tr>
+            <td colSpan={3} style={{ textAlign: "center" }}>
+              Error....
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 };
 
