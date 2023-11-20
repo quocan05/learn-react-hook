@@ -1,29 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import useFetch from "../custom/useFetch.js";
 const TodoJson = () => {
-  const [todos, setTodos] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    let fetchData = async () => {
-      try {
-        let response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        //console.log(response.data);
-        let data = response && response.data ? response.data : [];
-        let filteredData = data.filter((item) => item.id < 20);
-        setIsLoading(false);
-        setTodos(filteredData);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-        setIsError(true);
-      }
-    };
-    fetchData();
-  }, []);
+  const {
+    data: todos,
+    isLoading,
+    isError,
+  } = useFetch("https://jsonplaceholder.typicode.com/todos");
+
   return (
     <table>
       <thead>
