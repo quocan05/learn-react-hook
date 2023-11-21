@@ -8,6 +8,8 @@ import DetailCar from "./views/DetailCar.js";
 import TodoJson from "./views/TodoJson.js";
 import Countdown from "./views/Countdown.js";
 import Clock from "./views/Clock.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 function App() {
   let [name, setName] = useState("");
   let [temp, setTemp] = useState("");
@@ -66,15 +68,16 @@ function App() {
     setTodos(currentTodo);
   };
   return (
-    <div className="App">
-      <NavHeader />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello world</p>
-        <Clock />
-        {/* <p>My name is {name}</p> */}
+    <Router>
+      <div className="App">
+        <NavHeader />
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
 
-        {/* <Todos value={todos} title={"all todos"} delete={deleteTodo} />
+          <Clock />
+          {/* <p>My name is {name}</p> */}
+
+          {/* <Todos value={todos} title={"all todos"} delete={deleteTodo} />
 
         <Todos
           value={todos.filter((item) => item.auth === "An")}
@@ -105,7 +108,7 @@ function App() {
           Mah Facebook
         </a> */}
 
-        {/* <DetailCar
+          {/* <DetailCar
           car={{
             name: "Nissan GTR Skyline",
             brand: "Nissan",
@@ -138,16 +141,17 @@ function App() {
           }}
         /> */}
 
-        <p>Countdown gaycheck, Answer before you have no choice :)</p>
+          <p>Countdown gaycheck, Answer before you have no choice :)</p>
 
-        <Countdown alert={alertGay} />
+          <Countdown alert={alertGay} />
 
-        <span>-----------------</span>
+          <span>-----------------</span>
 
-        <p>List Todo JSON</p>
-        <TodoJson />
-      </header>
-    </div>
+          <p>List Todo JSON</p>
+          <TodoJson />
+        </header>
+      </div>
+    </Router>
   );
 }
 

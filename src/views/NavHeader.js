@@ -3,12 +3,12 @@ import "../views/NavHeader.scss";
 const NavHeader = () => {
   return (
     <div className="topnav">
-      <a className="active" href="#home">
+      <a className="active" href="/">
         Home
       </a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+      <a href="/detail">Detail</a>
+      <a href="/check">Gay check</a>
+      <a href="/clock">Clock</a>
     </div>
   );
 };
