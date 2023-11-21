@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import Todos from "./views/Todo.js";
 import DetailCar from "./views/DetailCar.js";
 import TodoJson from "./views/TodoJson.js";
+import Countdown from "./views/Countdown.js";
+import Clock from "./views/Clock.js";
 function App() {
   let [name, setName] = useState("");
   let [temp, setTemp] = useState("");
@@ -30,6 +32,10 @@ function App() {
     let newTodo = { id: generateRandomString(2), title: temp };
     setTodos([...todos, newTodo]);
     setTemp("");
+  };
+
+  const alertGay = () => {
+    //alert("too late , you are geyy");
   };
 
   useEffect(() => {
@@ -65,6 +71,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello world</p>
+        <Clock />
         {/* <p>My name is {name}</p> */}
 
         {/* <Todos value={todos} title={"all todos"} delete={deleteTodo} />
@@ -130,6 +137,12 @@ function App() {
             ],
           }}
         /> */}
+
+        <p>Countdown gaycheck, Answer before you have no choice :)</p>
+
+        <Countdown alert={alertGay} />
+
+        <span>-----------------</span>
 
         <p>List Todo JSON</p>
         <TodoJson />

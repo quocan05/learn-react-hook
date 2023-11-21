@@ -9,15 +9,18 @@ const useFetch = (url) => {
     try {
       let fetchData = async () => {
         let response = await axios.get(url);
-        let dataResponse = response && response.data ? response.data : [];
-        let filteredData = dataResponse.filter((item) => item.id < 10);
-        setData(filteredData);
+        // console.log(response.data);
+        let data = response && response.data ? response.data : [];
+        let filterData = data.filter((item) => item.id < 10);
+
+        //console.log(filterData);
+        setData(filterData);
         setIsLoading(false);
       };
       fetchData();
     } catch (error) {
-      setIsError(true);
       setIsLoading(false);
+      setIsError(true);
     }
   }, []);
 

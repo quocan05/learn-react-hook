@@ -7,7 +7,7 @@ const TodoJson = () => {
     isLoading,
     isError,
   } = useFetch("https://jsonplaceholder.typicode.com/todos");
-
+  console.log(">>>check data fetched: ", todos);
   return (
     <table>
       <thead>
@@ -18,17 +18,18 @@ const TodoJson = () => {
         </tr>
       </thead>
       <tbody>
-        {isError === false &&
-          isLoading === false &&
+        {isLoading === false &&
+          isError === false &&
           todos &&
           todos.length > 0 &&
           todos.map((todo) => (
             <tr key={todo.id}>
               <td>{todo.id}</td>
               <td>{todo.title}</td>
-              <td>{todo.completed ? "Yes" : "No"}</td>
+              <td>{todo.completed ? "yes" : "no"}</td>
             </tr>
           ))}
+
         {isLoading === true && (
           <tr>
             <td colSpan={3} style={{ textAlign: "center" }}>
@@ -36,7 +37,6 @@ const TodoJson = () => {
             </td>
           </tr>
         )}
-
         {isError === true && (
           <tr>
             <td colSpan={3} style={{ textAlign: "center" }}>
