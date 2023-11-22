@@ -1,15 +1,34 @@
-import "../views/NavHeader.scss";
-
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link, NavLink } from "react-router-dom";
 const NavHeader = () => {
   return (
-    <div className="topnav">
-      <a className="active" href="/">
-        Home
-      </a>
-      <a href="/detail">Detail</a>
-      <a href="/check">Gay check</a>
-      <a href="/clock">Clock</a>
-    </div>
+    <>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="/">Quoc An</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Link className="nav-link" to="/todo">
+                Todo
+              </Link>
+              <Link className="nav-link" to="/clock">
+                Clock
+              </Link>
+              <Link className="nav-link" to="/detail">
+                Detail
+              </Link>
+              <Link className="nav-link" to="/gay">
+                Gay Check
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 

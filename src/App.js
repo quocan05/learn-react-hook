@@ -8,7 +8,16 @@ import DetailCar from "./views/DetailCar.js";
 import TodoJson from "./views/TodoJson.js";
 import Countdown from "./views/Countdown.js";
 import Clock from "./views/Clock.js";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Outlet,
+  Routes,
+} from "react-router-dom";
+import { GayCheck } from "./views/GayCheck.js";
 
 function App() {
   let [name, setName] = useState("");
@@ -37,7 +46,7 @@ function App() {
   };
 
   const alertGay = () => {
-    //alert("too late , you are geyy");
+    alert("too late , you are geyy");
   };
 
   useEffect(() => {
@@ -68,90 +77,36 @@ function App() {
     setTodos(currentTodo);
   };
   return (
-    <Router>
-      <div className="App">
-        <NavHeader />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-
-          <Clock />
-          {/* <p>My name is {name}</p> */}
-
-          {/* <Todos value={todos} title={"all todos"} delete={deleteTodo} />
-
-        <Todos
-          value={todos.filter((item) => item.auth === "An")}
-          title={"An's todos"}
-          delete={deleteTodo}
-        />
-        <input
-          type="text"
-          value={temp}
-          onChange={(event) => {
-            handleChangeName(event);
-          }}
-        ></input>
-        <button
-          className="bt-clickme"
-          onClick={() => {
-            handleOnclick();
-          }}
-        >
-          Click me
-        </button>
-        <a
-          className="App-link"
-          href="https://www.facebook.com/quoc.aan05/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Mah Facebook
-        </a> */}
-
-          {/* <DetailCar
-          car={{
-            name: "Nissan GTR Skyline",
-            brand: "Nissan",
-            imageId: "DbbBaNX",
-            altNameImage: "Image of Nissan GTR Skyline",
-            type: "Sport Car",
-            generation: [
-              "1969-1972",
-              "1972-1973",
-              "1989–1994",
-              "1995–1998",
-              "1999–2002",
-            ],
-          }}
-        />
-        <DetailCar
-          car={{
-            name: "Koenigsegg Jesko",
-            brand: "Koenigsegg",
-            imageId: "VRJN7gf",
-            altNameImage: "Image of Koenigsegg Jesko",
-            type: "Super Sport Car",
-            generation: [
-              "1969-1972",
-              "1972-1973",
-              "1989–1994",
-              "1995–1998",
-              "1999–2002",
-            ],
-          }}
-        /> */}
-
-          <p>Countdown gaycheck, Answer before you have no choice :)</p>
-
-          <Countdown alert={alertGay} />
-
-          <span>-----------------</span>
-
-          <p>List Todo JSON</p>
-          <TodoJson />
-        </header>
-      </div>
-    </Router>
+    <div className="App">
+      <NavHeader />
+      <div>Xin chao to ten la Quoc An</div>
+      <Routes>
+        <Route path="clock" element={<Clock />}></Route>
+        <Route
+          path="detail"
+          element={
+            <DetailCar
+              car={{
+                name: "Nissan GTR Skyline",
+                brand: "Nissan",
+                imageId: "DbbBaNX",
+                altNameImage: "Image of Nissan GTR Skyline",
+                type: "Sport Car",
+                generation: [
+                  "1969-1972",
+                  "1972-1973",
+                  "1989–1994",
+                  "1995–1998",
+                  "1999–2002",
+                ],
+              }}
+            />
+          }
+        ></Route>
+        <Route path="todo" element={<TodoJson />}></Route>
+        <Route path="gay" element={<GayCheck />}></Route>
+      </Routes>
+    </div>
   );
 }
 
