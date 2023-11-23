@@ -24,6 +24,9 @@ const NavHeader = () => {
               <Link className="nav-link" to="/gay">
                 Gay Check
               </Link>
+              <Link className="nav-link" to="/posts">
+                Posts
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

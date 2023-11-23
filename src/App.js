@@ -18,6 +18,8 @@ import {
   Routes,
 } from "react-router-dom";
 import { GayCheck } from "./views/GayCheck.js";
+import Posts from "./views/Posts.js";
+import { DetailPost } from "./views/DetailPost.js";
 
 function App() {
   let [name, setName] = useState("");
@@ -105,6 +107,9 @@ function App() {
         ></Route>
         <Route path="todo" element={<TodoJson />}></Route>
         <Route path="gay" element={<GayCheck />}></Route>
+        <Route path="posts" element={<Posts />}>
+          <Route path=":id" element={<DetailPost></DetailPost>} />
+        </Route>
       </Routes>
     </div>
   );
