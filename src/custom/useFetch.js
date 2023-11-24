@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url, isFullData) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -11,7 +11,7 @@ const useFetch = (url) => {
         let response = await axios.get(url);
         // console.log(response.data);
         let data = response && response.data ? response.data : [];
-        let filterData = data.slice(0, 10);
+        let filterData = isFullData === true ? data.slice(0, 10) : data;
 
         //console.log(filterData);
         setData(filterData);

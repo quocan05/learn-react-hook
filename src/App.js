@@ -8,7 +8,7 @@ import DetailCar from "./views/DetailCar.js";
 import TodoJson from "./views/TodoJson.js";
 import Countdown from "./views/Countdown.js";
 import Clock from "./views/Clock.js";
-
+import { Posts } from "./views/Posts.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +18,6 @@ import {
   Routes,
 } from "react-router-dom";
 import { GayCheck } from "./views/GayCheck.js";
-import Posts from "./views/Posts.js";
 import { DetailPost } from "./views/DetailPost.js";
 
 function App() {
@@ -107,9 +106,8 @@ function App() {
         ></Route>
         <Route path="todo" element={<TodoJson />}></Route>
         <Route path="gay" element={<GayCheck />}></Route>
-        <Route path="posts" element={<Posts />}>
-          <Route path=":id" element={<DetailPost></DetailPost>} />
-        </Route>
+        <Route path="posts" element={<Posts />}></Route>
+        <Route path="posts/:id" element={<DetailPost />} />
       </Routes>
     </div>
   );

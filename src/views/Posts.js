@@ -3,12 +3,12 @@ import useFetch from "../custom/useFetch";
 import { Button } from "react-bootstrap";
 import "../style/Post.scss";
 import { Link, useParams } from "react-router-dom";
-const Posts = () => {
+export const Posts = () => {
   const {
     data: dataPosts,
     isLoading,
     isError,
-  } = useFetch(`https://jsonplaceholder.typicode.com/posts`);
+  } = useFetch(`https://jsonplaceholder.typicode.com/posts`, true);
   // console.log(dataPosts);
 
   return (
@@ -39,5 +39,3 @@ const Posts = () => {
     </div>
   );
 };
-
-export default Posts;
