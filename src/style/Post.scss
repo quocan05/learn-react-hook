@@ -23,3 +23,23 @@
             font-weight: 600;
     }
 }
+
+.form-body{
+    
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    /* align-items: center; */
+    gap: 10px;
+    margin: 0 auto;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+
+    .label-form{
+        display: flex;
+    }
+
+   
+        
+}

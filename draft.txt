@@ -1,1 +1,2 @@
-todo : sử dụng useParam, redirect, css trang, làm cái page hiện blog, sử dụng lại useFEtch
+
+todo: tạo một modal pop up add post, đẩy post mới và update giao diện và xóa blabal

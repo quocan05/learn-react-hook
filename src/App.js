@@ -19,6 +19,7 @@ import {
 } from "react-router-dom";
 import { GayCheck } from "./views/GayCheck.js";
 import { DetailPost } from "./views/DetailPost.js";
+import { AddPost } from "./views/AddPost.js";
 
 function App() {
   let [name, setName] = useState("");
@@ -108,6 +109,7 @@ function App() {
         <Route path="gay" element={<GayCheck />}></Route>
         <Route path="posts" element={<Posts />}></Route>
         <Route path="posts/:id" element={<DetailPost />} />
+        <Route path="posts/add-new-post" element={<AddPost />} />
       </Routes>
     </div>
   );
