@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 import "../style/Post.scss";
-export const AddPost = () => {
+import axios from "axios";
+export const AddPost = (props) => {
   //console.log("Call add post");
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
     if (!title || !detail) {
       alert("you lost somewhere, try again!");
       return;
     }
-    console.log("Check data get >>> title: ", title, ">>> detail: ", detail);
+
+    let newData = {
+      title: title,
+      body: detail,
+      userId: 1,
+    };
+    //console.log("Check data get >>> title: ", title, ">>> detail: ", detail);
+    let response = await axios.post(
+      "https://jsonplaceholder.typicode.com/posts",
+      newData
+    );
+    if (response && response.data) {
+      props.addNewPost(response.data);
+    }
   };
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "../custom/useFetch";
 import { Button, Modal } from "react-bootstrap";
 import "../style/Post.scss";
@@ -12,10 +12,30 @@ export const Posts = () => {
   } = useFetch(`https://jsonplaceholder.typicode.com/posts`, true);
   // console.log(dataPosts);
 
+  const [newData, setNewData] = useState([]);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    if (dataPosts && dataPosts.length > 0) {
+      let data = dataPosts.slice(0, 9);
+      setNewData(data);
+    }
+  }, [dataPosts]);
+
+  const handleAddNewPost = (post) => {
+    let data = [...newData];
+    data.unshift(post);
+    setShow(false);
+    setNewData(data);
+    console.log(">>>check new Data: ", data);
+  };
+
+  const handleDelete = (id) => {
+    setNewData(newData.filter((item) => item.id !== id));
+  };
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -27,15 +47,15 @@ export const Posts = () => {
           <Modal.Title>Add new post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddPost></AddPost>
+          <AddPost addNewPost={handleAddNewPost}></AddPost>
         </Modal.Body>
       </Modal>
 
       <div className="post-container">
         {isLoading === false &&
-          dataPosts &&
-          dataPosts.length > 0 &&
-          dataPosts.map((post) => {
+          newData &&
+          newData.length > 0 &&
+          newData.map((post) => {
             return (
               <div className="post" key={post.id}>
                 <div className="post-title">{post.title}</div>
@@ -43,7 +63,14 @@ export const Posts = () => {
                 <Link to={`${post.id}`}>
                   <Button>Show Detail</Button>
                 </Link>
-                <Button variant="danger">Delete</Button>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    handleDelete(post.id);
+                  }}
+                >
+                  Delete
+                </Button>
               </div>
             );
           })}
