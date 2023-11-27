@@ -1,10 +1,18 @@
 
 @import '~bootstrap/scss/bootstrap';
+
+/* App.scss */
+.wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Thiết lập chiều cao bằng 100% chiều cao của viewport */
+  background: #53596f; /* Màu nền hoặc hình nền cho wrapper */
+  /* Các thuộc tính khác tùy thuộc vào thiết kế của bạn */
+}
+
 .App {
   text-align: center;
-  background: #53596f;
   color: white;
-  height: 100vh;
 }
 
 .App-logo {

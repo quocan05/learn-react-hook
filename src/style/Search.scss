@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/bootstrap';
+
+.search-bar{
+    width: 50%;
+    margin: 0 auto;
+
+    .btn-search{
+        background: gray;
+        
+    }
+
+    .btn-search:hover{
+        color: red;
+    }
+}
+
+.search-result{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 20px;
+
+    .left{
+
+       
+        width: 40%;
+
+        iframe{
+            width: 100%;
+            height: 250px;
+        }
+    }
+    .right
+    {
+        font-size: 14px;
+        padding-left: 10px;
+        width: 60%;
+       
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: left;
+        .title{
+            font-size: 20px !important;
+        }
+    }
+}

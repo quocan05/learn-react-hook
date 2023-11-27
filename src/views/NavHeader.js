@@ -27,6 +27,17 @@ const NavHeader = () => {
               <Link className="nav-link" to="/posts">
                 Posts
               </Link>
+              <Link
+                className="nav-link"
+                style={{
+                  background: "red",
+                  color: "white",
+                  borderRadius: "20px",
+                }}
+                to="/ytb-search"
+              >
+                Watch
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

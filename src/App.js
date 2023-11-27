@@ -20,6 +20,7 @@ import {
 import { GayCheck } from "./views/GayCheck.js";
 import { DetailPost } from "./views/DetailPost.js";
 import { AddPost } from "./views/AddPost.js";
+import { SearchYoutube } from "./views/SearchYoutube.js";
 
 function App() {
   let [name, setName] = useState("");
@@ -79,38 +80,41 @@ function App() {
     setTodos(currentTodo);
   };
   return (
-    <div className="App">
-      <NavHeader />
-      <div>Xin chao to ten la Quoc An</div>
-      <Routes>
-        <Route path="clock" element={<Clock />}></Route>
-        <Route
-          path="detail"
-          element={
-            <DetailCar
-              car={{
-                name: "Nissan GTR Skyline",
-                brand: "Nissan",
-                imageId: "DbbBaNX",
-                altNameImage: "Image of Nissan GTR Skyline",
-                type: "Sport Car",
-                generation: [
-                  "1969-1972",
-                  "1972-1973",
-                  "1989–1994",
-                  "1995–1998",
-                  "1999–2002",
-                ],
-              }}
-            />
-          }
-        ></Route>
-        <Route path="todo" element={<TodoJson />}></Route>
-        <Route path="gay" element={<GayCheck />}></Route>
-        <Route path="posts" element={<Posts />}></Route>
-        <Route path="posts/:id" element={<DetailPost />} />
-        <Route path="posts/add-new-post" element={<AddPost />} />
-      </Routes>
+    <div className="wrapper">
+      <div className="App">
+        <NavHeader />
+        <div>Xin chao to ten la Quoc An</div>
+        <Routes>
+          <Route path="clock" element={<Clock />}></Route>
+          <Route
+            path="detail"
+            element={
+              <DetailCar
+                car={{
+                  name: "Nissan GTR Skyline",
+                  brand: "Nissan",
+                  imageId: "DbbBaNX",
+                  altNameImage: "Image of Nissan GTR Skyline",
+                  type: "Sport Car",
+                  generation: [
+                    "1969-1972",
+                    "1972-1973",
+                    "1989–1994",
+                    "1995–1998",
+                    "1999–2002",
+                  ],
+                }}
+              />
+            }
+          ></Route>
+          <Route path="todo" element={<TodoJson />}></Route>
+          <Route path="gay" element={<GayCheck />}></Route>
+          <Route path="posts" element={<Posts />}></Route>
+          <Route path="posts/:id" element={<DetailPost />} />
+          <Route path="posts/add-new-post" element={<AddPost />} />
+          <Route path="ytb-search" element={<SearchYoutube />} />
+        </Routes>
+      </div>
     </div>
   );
 }
